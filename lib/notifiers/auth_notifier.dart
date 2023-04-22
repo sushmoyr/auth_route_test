@@ -1,18 +1,18 @@
 import 'dart:async';
 
 import 'package:auth_route_test/notifiers/app_state_notifier.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final authNotifierProvider =
-    AsyncNotifierProvider<AuthNotifier, void>(() => AuthNotifier());
+    StreamNotifierProvider<AuthNotifier, User?>(() => AuthNotifier());
 
-class AuthNotifier extends AsyncNotifier<void> {
+final firebaseAuthProvider =
+    Provider<FirebaseAuth>((_) => FirebaseAuth.instance);
+
+class AuthNotifier extends StreamNotifier<User?> {
   @override
-  FutureOr<void> build() async {
-    return;
-  }
-
-  Future<void> login() async {
-    return ref.read(authRepositoryProvider).login();
+  Stream<User?> build() {
+    return ref.watch(firebaseAuthProvider).authStateChanges();
   }
 }
