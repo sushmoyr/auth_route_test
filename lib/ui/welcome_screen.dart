@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:routemaster/routemaster.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -17,7 +18,7 @@ class WelcomeScreen extends StatelessWidget {
             Text("Welcome screen"),
             ElevatedButton(
               onPressed: () {
-                Routemaster.of(context).push('/auth');
+                context.go('/auth');
               },
               child: Text("Login"),
             )

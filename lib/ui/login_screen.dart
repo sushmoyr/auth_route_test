@@ -1,8 +1,23 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:routemaster/routemaster.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
+
+  @override
+  void dispose() {
+    email.dispose();
+    password.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +36,22 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextField(
+                  controller: email,
                   decoration: InputDecoration(
-                    labelText: 'Mobile No.',
+                    labelText: 'Email',
+                  ),
+                ),
+                SizedBox(height: 24),
+                TextField(
+                  controller: password,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
                   ),
                 ),
                 SizedBox(height: 24),
                 ElevatedButton(
                   onPressed: () {
-                    Routemaster.of(context).push('/auth/verify');
+                    FirebaseAuth.instance.signInAnonymously();
                   },
                   child: Text('Login'),
                 ),

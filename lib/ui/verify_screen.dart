@@ -32,14 +32,7 @@ class VerifyScreen extends ConsumerWidget {
                   ),
                   SizedBox(height: 24),
                   ElevatedButton(
-                    onPressed: () async {
-                      ref
-                          .read(authNotifierProvider.notifier)
-                          .login()
-                          .then((value) {
-                        // Routemaster.of(context).push('/');
-                      });
-                    },
+                    onPressed: () async {},
                     child: Text('Verify'),
                   ),
                 ],
