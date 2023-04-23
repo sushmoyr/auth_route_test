@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:auth_route_test/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:routemaster/routemaster.dart';
@@ -7,24 +10,66 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Widget imageSection = Image.asset(name);
+    final style = Theme.of(context).textTheme.displayMedium?.copyWith(
+          color: Colors.white,
+        );
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Welcome"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Welcome screen"),
-            ElevatedButton(
-              onPressed: () {
-                context.go('/auth');
-              },
-              child: Text("Login"),
-            )
-          ],
-        ),
+      body: Stack(
+        alignment: Alignment.center,
+        fit: StackFit.expand,
+        children: [
+          ImageFiltered(
+            imageFilter: ImageFilter.blur(
+              sigmaX: 4,
+              sigmaY: 4,
+            ),
+            child: Image.asset(
+              Assets.assetsBackground,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Center(
+            child: Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(text: 'Welcome to\n'),
+                  TextSpan(text: 'The Heavenly Palace'),
+                ],
+              ),
+              style: style,
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Positioned(
+            bottom: 32,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(
+                      color: Colors.white,
+                    ),
+                    foregroundColor: Colors.white,
+                  ),
+                  onPressed: () {},
+                  child: Text("Login"),
+                ),
+                SizedBox(width: 24),
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(
+                      color: Colors.white,
+                    ),
+                    foregroundColor: Colors.white,
+                  ),
+                  onPressed: () {},
+                  child: Text("Sign up"),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
