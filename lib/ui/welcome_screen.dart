@@ -7,6 +7,7 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Widget imageSection = Image.asset(name);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Welcome"),
