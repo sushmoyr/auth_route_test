@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:auth_route_test/notifiers/app_state_notifier.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -16,3 +15,14 @@ class AuthNotifier extends StreamNotifier<User?> {
     return ref.watch(firebaseAuthProvider).authStateChanges();
   }
 }
+
+// class AuthNotifierSync extends Notifier<User?> {
+//   @override
+//   User? build() {
+//     return ref.watch(authNotifierProvider).map(
+//           data: (user) => user.value,
+//           error: (e) => null,
+//           loading: (_) => ref.read(firebaseAuthProvider).currentUser,
+//         );
+//   }
+// }

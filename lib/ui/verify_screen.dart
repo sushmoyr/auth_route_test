@@ -25,12 +25,12 @@ class VerifyScreen extends ConsumerWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextField(
+                  const TextField(
                     decoration: InputDecoration(
                       labelText: 'Enter Pin',
                     ),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   ElevatedButton(
                     onPressed: () async {},
                     child: Text('Verify'),

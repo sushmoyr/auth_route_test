@@ -8,14 +8,14 @@ final _key = GlobalKey<NavigatorState>();
 
 final routerProvider = Provider<GoRouter>((ref) {
   final auth = ref.watch(authNotifierProvider);
-  print(auth);
+  // print(auth);
   return GoRouter(
       navigatorKey: _key,
       debugLogDiagnostics: true,
       initialLocation: '/',
       routes: [
         GoRoute(
-          path: '/auth',
+          path: '/login',
           name: 'Login',
           builder: (ctx, state) => LoginScreen(),
         ),
@@ -50,8 +50,8 @@ final routerProvider = Provider<GoRouter>((ref) {
 
         final bool isAuthenticated = auth.valueOrNull != null;
 
-        bool isInAuthRoute = state.location == '/auth' ||
-            state.location == '/auth/verify' ||
+        bool isInAuthRoute = state.location == '/login' ||
+            state.location == '/login/verify' ||
             state.location == '/welcome';
 
         print('Is in auth: $isInAuthRoute, auth: $isAuthenticated');

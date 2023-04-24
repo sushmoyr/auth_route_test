@@ -30,7 +30,7 @@ class WelcomeScreen extends StatelessWidget {
           ),
           Center(
             child: Text.rich(
-              TextSpan(
+              const TextSpan(
                 children: [
                   TextSpan(text: 'Welcome to\n'),
                   TextSpan(text: 'The Heavenly Palace'),
@@ -52,7 +52,9 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                     foregroundColor: Colors.white,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    context.go('/login');
+                  },
                   child: Text("Login"),
                 ),
                 SizedBox(width: 24),
